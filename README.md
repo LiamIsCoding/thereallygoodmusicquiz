@@ -8,4 +8,4 @@ X | Undecided
 X | Undecided
 
 ## Domain
-abcd
+Create a song guessing game, using (the api we choose) to allow the user to listen to the song for a certain amount of time, and then guess the song name.
