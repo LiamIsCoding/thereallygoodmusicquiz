@@ -2,7 +2,7 @@
 ## Members
 Member | Preferred Role(s)
 --- | --- 
-Sasha Dmitriev | Undecided
+Sasha Dmitriev | Frontend & Project Management
 Qudsia Fawad | Documentation & UI/UX
 X | Undecided
 X | Undecided
