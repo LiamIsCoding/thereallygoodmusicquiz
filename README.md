@@ -4,7 +4,7 @@ Member | Preferred Role(s)
 --- | --- 
 Sasha Dmitriev | Frontend & Project Management
 Qudsia Fawad | Documentation & UI/UX
-X | Undecided
+Liam Evask | Back End
 X | Undecided
 
 ## Domain
