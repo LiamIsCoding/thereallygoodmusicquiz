@@ -3,7 +3,7 @@
 Member | Preferred Role(s)
 --- | --- 
 Sasha Dmitriev | Undecided
-X | Undecided
+Qudsia Fawad | Documentation & UI/UX
 X | Undecided
 X | Undecided
 
