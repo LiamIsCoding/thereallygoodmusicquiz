@@ -2,7 +2,7 @@
 ## Members
 Member | Preferred Role(s)
 --- | --- 
-Sasha | Undecided
+Sasha Dmitriev | Undecided
 X | Undecided
 X | Undecided
 X | Undecided
