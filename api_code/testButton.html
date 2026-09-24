@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="testButton">test me</button>
+    
+    <script>
+        const button = document.getElementById("testButton");
+        button.addEventListener("click", () => {
+            fetch("http://localhost:3000/lastfm-test")
+            .then(response => response.json())
+            .then(data => console.log(data));})
+    </script>
+
+</body>
+</html>
