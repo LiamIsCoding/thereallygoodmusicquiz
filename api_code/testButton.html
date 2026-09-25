@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
+    <select id="genreSelect">
+        <option value="rock">Rock</option>
+        <option value="pop">Pop</option>
+        <option value="jazz">Jazz</option>
+        <option value="hip-hop">Hip-Hop</option>
+        <option value="electronic">Electronic</option>
+        <option value="classical">Classical</option>
+        <option value="country">Country</option>
+        <option value="blues">Blues</option>
+        <option value="reggae">Reggae</option>
+        <option value="metal">Metal</option>
+        <option value="punk">Punk</option>
+        <option value="folk">Folk</option>
+        <option value="soul">Soul</option>
+        <option value="funk">Funk</option>
+        <option value="disco">Disco</option>
+    </select>
+
     <button id="testButton">test me</button>
-    
+
     <script>
         const button = document.getElementById("testButton");
+        const genreSelect = document.getElementById("genreSelect");
+
         button.addEventListener("click", () => {
-            fetch("http://localhost:3000/lastfm-test")
-            .then(response => response.json())
-            .then(data => console.log(data));})
+            const genre = genreSelect.value;
+
+            fetch(`http://localhost:3000/lastfm-test?genre=${genre}`)
+                .then(response => response.json())
+                .then(data => console.log(data));
+        });
     </script>
 
 </body>
+
 </html>
