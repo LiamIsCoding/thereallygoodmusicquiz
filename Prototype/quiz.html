@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Quiz Browser</title>
+
+    <!--this is the header-->
+
+    <header class="site-header">
+      <a class="title">
+        <h1>The Really Good Music Quiz</h1>
+      </a>
+      <nav>
+        <a href="browser.html">Find a Quiz</a>
+        <a href="#browse">My Quizzes</a>
+      </nav>
+    </header>
 </head>
 <body>
     
-    <button id="startQuizBtn">Start Quiz</button>
-    <button id="Hint">hint</button>
+    <button id="startQuizBtn">Start Quiz</button><!--this is going to be the button to start the quiz when you are ready-->
+    <button id="Hint">hint</button><!--this is the button to get a hint, which will just allow you to listen to more of the song but you will recieve less points-->
     <br>
-    <text id="round">Round 1</text>
+    <text id="round">Round 1</text><!--this is a marker of where the score will be displayed and where it will show how many rounds you have managed-->
     <br>
-    <text id="song player here">song player here</text>
+    <text id="song player here">song player here</text><!--this is a marker of where the music player for the active song will go-->
     <br>
     <button id="option 1">option 1</button>
     <button id="option 2">option 2</button>
     <br>
     <button id="option 3">option 3</button>
     <button id="option 4">option 4</button>
+    <!--this array of buttons is for the 4 options you can select one will be correct, the other 3 will be also chosen from the same api call-->
 
 </body>
 </html>
