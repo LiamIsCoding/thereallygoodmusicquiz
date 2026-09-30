@@ -1,32 +1,55 @@
 body {
-    font-family: Arial, sans sans-serif; 
-    margin: 0; 
-    background-color: #f4f4f4;
+    margin: 0;
+    padding-top: 50px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
     text-align: center;
 }
 
-header {
-    background-color: #222;
-    color: white;
-    padding: 20px;
-}
-
-main {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: white;
-
-}
-
 button {
-    padding: 10px 20px;
-    margin: 15px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 6px;
     cursor: pointer;
 }
 
-input {
-    padding: 10px;
-    margin: 10px;
+#startQuizBtn {
+    padding: 15px 30px;
+    margin-right: 25px;
+}
 
+#Hint {
+    padding: 15px 30px;
+}
+
+#round {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#song_player_here {
+    display: inline-block;
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 25px 80px;
+    margin-bottom: 25px;
+}
+
+#option_1,
+#option_2,
+#option_3,
+#option_4 {
+    width: 150px;
+    height: 60px;
+    margin: 8px;
+}
+
+button:hover {
+    background-color: #eeeeee;
 }
