@@ -8,16 +8,16 @@ The application will use the [Last.fm](http://Last.fm) API to get information to
 
 **Sample response when asked for top 5 rock songs:**  
 {  
-  tracks: {  
-    track: \[ \[Object\], \[Object\], \[Object\], \[Object\], \[Object\] \],  
-    '@attr': {  
-      tag: 'rock',  
-      page: '1',  
-      perPage: '5',  
-      totalPages: '414',  
-      total: '2068'  
-    }  
-  }  
+&emsp;tracks: {  
+&emsp;&emsp;track: \[ \[Object\], \[Object\], \[Object\], \[Object\], \[Object\] \],  
+&emsp;&emsp;'@attr': {  
+&emsp;&emsp;tag: 'rock',  
+&emsp;&emsp;page: '1',  
+&emsp;&emsp;perPage: '5',  
+&emsp;&emsp;totalPages: '414',  
+&emsp;&emsp;total: '2068'  
+&emsp;}  
+&emsp;}  
 } 
 
 **Comparators**  
@@ -42,5 +42,3 @@ Songless \- Songless is the most similar to our game because our players listen 
 | Qudsia Fawad | Documentation & UI/UX | M1: HTML/CSS styling and UI design  M2: UI design and styling for React components M3: UI/UX testing, final styling, and documentation M4: Research and documentation of individual topic |
 | Liam Evask | Back End | M1: quiz html, writeframe, comments M2: JS for game mechanics and api calls M3: Bug testing, making sure things work M4: Undecided |
 | Omar Ahmed | Testing & Quality Assurance | M1:helping create play and hint button for static html and test the prototype M2: Test and help create different features such as the point deduction system as well as test the interactions with the UI M3: Test the API, how the quiz functions and fix any errors. Document any bugs before we deploy the project M4:Research a topic not taught in this course |
-
-/
