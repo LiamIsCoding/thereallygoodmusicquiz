@@ -38,7 +38,7 @@ Songless \- Songless is the most similar to our game because our players listen 
 
 | Member | Role(s) | Plan |
 | :---: | :---: | ----- |
-| Sasha Dmitriev | Frontend & Project Management | Issue management and project board maintenance for all milestones HTML page design (M1, M2, M3) Creation of controlled form |
+| Sasha Dmitriev | Frontend & Project Management | Issue management and project board maintenance for all milestones, HTML page design (M1, M2, M3), Creation of controlled form |
 | Qudsia Fawad | Documentation & UI/UX | M1: HTML/CSS styling and UI design  M2: UI design and styling for React components M3: UI/UX testing, final styling, and documentation M4: Research and documentation of individual topic |
 | Liam Evask | Back End | M1: quiz html, writeframe, comments M2: JS for game mechanics and api calls M3: Bug testing, making sure things work M4: Undecided |
 | Omar Ahmed | Testing & Quality Assurance | M1:helping create play and hint button for static html and test the prototype M2: Test and help create different features such as the point deduction system as well as test the interactions with the UI M3: Test the API, how the quiz functions and fix any errors. Document any bugs before we deploy the project M4:Research a topic not taught in this course |
