@@ -16,7 +16,7 @@ The application will use the [Last.fm](http://Last.fm) API to get information to
 &emsp;&emsp;perPage: '5',  
 &emsp;&emsp;totalPages: '414',  
 &emsp;&emsp;total: '2068'  
-&emsp;}  
+&emsp;&emsp;}  
 &emsp;}  
 } 
 
