@@ -34,7 +34,7 @@ Songless \- Songless is the most similar to our game because our players listen 
 | 1 | Sept. 29th (Lab 03\) | Proposal, includes the topic, API that is being used, comparators to the to-be-created website, and the feature plan for the upcoming milestones. Static HTML \+ CSS. Prototype Project board, with issues added. |
 | 2 | Oct. 20th (Lab 06\) | React \+ Vite Prototype. Should use mock data (a JSON file or array). Should make use of components, properties, states, event handling, and list rendering with keys. Branches merged through pull requests. Project board updates, confirming completion for Milestone 2 and anything that has been completed since. Live progress demo. |
 | 3 | Nov. 17th (Lab 10\) | Complete application with 1. Using the API 2. Loading/error/cancel handling 3. Search/filter/sort 4. Routed detail views 5. Persistent user state 6. At least 1 form Tests 7. Deployed to a public URL. Final presentation and demo Documented AI use, if any. |
-| 4 | Dec. XX (Exam) | Research a topic that was not taught in CSCI3230U individually. Implementations of topic in the application. Create short video explaining the concept from the research, then demo the implementation |
+| 4 | Dec. XX (Exam) | Research a topic that was not taught in CSCI3230U individually. Implementations of topic in the application. Create short video explaining the concept from the research, then demo the implementation. |
 
 | Member | Role(s) | Plan |
 | :---: | :---: | ----- |
