@@ -1,0 +1,59 @@
+/*generic style file, applies to entire program*/
+:root {
+  
+}
+body {
+    margin: 0;
+    padding-top: 50px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+button {
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#startQuizBtn {
+    padding: 15px 30px;
+    margin-right: 25px;
+}
+
+#Hint {
+    padding: 15px 30px;
+}
+
+#round {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#song_player_here {
+    display: inline-block;
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 25px 80px;
+    margin-bottom: 25px;
+}
+
+#option_1,
+#option_2,
+#option_3,
+#option_4 {
+    width: 150px;
+    height: 60px;
+    margin: 8px;
+}
+
+button:hover {
+    background-color: #eeeeee;
+}
