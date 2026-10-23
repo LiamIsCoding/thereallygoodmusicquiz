@@ -6,7 +6,8 @@ function Quiz() {
 
   return (
     <>
-      <section id="body">
+      <section id="quiz">
+        {/* TODO: replace the variables with javascript logic*/}
         <button id="startQuizBtn">Start Quiz</button>
         <button id="Hint">hint</button>
         <br />

@@ -11,6 +11,7 @@ function Browser() {
             <ul className="quizzes" id="quizzes">
                 <li>
                     <article>
+                      {/* TODO: replace the variables with javascript logic*/}
                         <h3><a href="quiz.html">EXAMPLEQUIZ</a></h3>
                         <p>Rock</p>
                         <p>5 sec</p>
