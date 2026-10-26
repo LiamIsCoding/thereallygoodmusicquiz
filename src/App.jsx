@@ -4,14 +4,15 @@ import QuizPage from './QuizPage.jsx'
 
 function App() {
   const [page, setPage] = useState('browse')
+  const [quiz, setQuiz] = useState(0)
 
     let currentPage;
     switch (page) {
         case 'browse':
-            currentPage = <BrowserPage setPage={setPage}/>;
+            currentPage = <BrowserPage setPage={setPage} setQuiz={setQuiz}/>;
             break;
         case 'quiz':
-            currentPage = <QuizPage />;
+            currentPage = <QuizPage index={quiz}/>;
             break;
         case 'results':
             

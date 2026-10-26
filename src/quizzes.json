@@ -1,0 +1,42 @@
+{
+    "0": {
+        "name": "quiz 1",
+        "genre": "rock",
+        "timer": 5,
+        "questions":
+        [
+            {
+                "options": ["song 1", "song 2", "song 3", "song 4"],
+                "correct": 0
+            },
+            {
+                "options": ["song 5", "song 6", "song 7", "song 8"],
+                "correct": 1
+            },
+            {
+                "options": ["song 9", "song 10", "song 11", "song 12"],
+                "correct": 2
+            }
+        ]
+    },
+    "1": {
+        "name": "quiz 2",
+        "genre": "metal",
+        "timer": 5,
+        "questions":
+        [
+            {
+                "options": ["song 4", "song 3", "song 2", "song 1"],
+                "correct": 2
+            },
+            {
+                "options": ["song 8", "song 7", "song 6", "song 5"],
+                "correct": 1
+            },
+            {
+                "options": ["song 12", "song 11", "song 10", "song 9"],
+                "correct": 0
+            }
+        ]
+    }
+}

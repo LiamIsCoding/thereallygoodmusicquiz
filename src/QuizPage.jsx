@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import './styles/quiz_page.css'
+import quizData from './quizzes.json'
 
-function QuizPage() {
+function QuizPage({index}) {
   return (
     <>
       <section id="quiz">
         {/* TODO: replace the variables with javascript logic*/}
+        {/* index is passed to access the given quiz directly*/}
+        <p>quiz {index}</p>
         <button id="startQuizBtn">Start Quiz</button>
         <button id="Hint">hint</button>
         <br />

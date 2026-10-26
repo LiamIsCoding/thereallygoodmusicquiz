@@ -1,22 +1,25 @@
 import { useState } from 'react'
 import './styles/browser_page.css'
+import quizData from './quizzes.json'
 
-function BrowserPage({setPage}) {
+function BrowserPage({setPage, setQuiz}) {
+  const quizzes = Object.entries(quizData)
+  
   return (
     <>
-      <section id="list" aria-labelledby="list-heading">
+      <div className="body">
         <h2 id="list-heading">Browse Quizzes</h2>
-            <ul className="quizzes" id="quizzes">
-                <li>
-                    <article>
-                      {/* TODO: replace the variables with javascript logic*/}
-                        <button onClick={() => setPage('quiz')}>Quiz1</button>
-                        <p>Rock</p>
-                        <p>5 sec</p>
-                    </article>
-                </li>
-            </ul>
-        </section>
+        <ul>
+          {quizzes.map(([index, {name, genre, timer}]) => (
+            <li key={index} className="quiz-card">
+              <h3 className="quiz-name">{name}</h3>
+              <p>{genre}</p>
+              <p>{timer} seconds</p>
+              <button onClick={() => {setPage('quiz'); setQuiz(Number(index))}}>Play</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   )
 }
