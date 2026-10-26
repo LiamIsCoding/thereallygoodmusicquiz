@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import './styles/quiz.css'
+import './styles/quiz_page.css'
 
-function Quiz() {
-  const [count, setCount] = useState(0)
-
+function QuizPage() {
   return (
     <>
       <section id="quiz">
@@ -26,4 +24,4 @@ function Quiz() {
   )
 }
 
-export default Quiz
+export default QuizPage

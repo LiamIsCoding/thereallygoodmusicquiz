@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import './styles/browser.css'
+import './styles/browser_page.css'
 
-function Browser() {
-  const [count, setCount] = useState(0)
-
+function BrowserPage({setPage}) {
   return (
     <>
       <section id="list" aria-labelledby="list-heading">
@@ -12,7 +10,7 @@ function Browser() {
                 <li>
                     <article>
                       {/* TODO: replace the variables with javascript logic*/}
-                        <h3><a href="quiz.html">EXAMPLEQUIZ</a></h3>
+                        <button onClick={() => setPage('quiz')}>Quiz1</button>
                         <p>Rock</p>
                         <p>5 sec</p>
                     </article>
@@ -23,4 +21,4 @@ function Browser() {
   )
 }
 
-export default Browser
+export default BrowserPage
