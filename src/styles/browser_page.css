@@ -10,7 +10,7 @@ ul {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
 }
 
@@ -46,4 +46,43 @@ ul {
 .quiz-card button:hover {
   background-color: white;
   color: black;
+}
+
+/* top row: heading on the left, search bar on the right */
+.browse-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.browse-top #list-heading {
+  margin: 0;
+}
+
+/* search bar */
+.search-bar {
+  width: 260px;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+}
+
+.search-bar::placeholder {
+  color: var(--muted);
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.no-results {
+  color: var(--muted);
+  font-size: 20px;
 }
