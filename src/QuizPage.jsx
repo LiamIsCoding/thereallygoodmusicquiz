@@ -91,8 +91,9 @@ function QuizPage({ index }) {
 
         {/* Create the buttons */}
         {/* when an answer is clicked, it checks if it's correct and updates the score and moves to the next question */}
-        {start && question && question.options.map((option, i) => (
-          <button key={i} onClick={() => {
+        {/* the buttons sit inside a div with a class so the css can lay them out two per row */}
+        {start && question && <div className="options-grid">{question.options.map((option, i) => (
+          <button key={i} className="option-btn" onClick={() => {
             if (i === question.correct) {
               setScore(currentScore => currentScore + questionPoints)
             }
@@ -102,7 +103,7 @@ function QuizPage({ index }) {
             setQuestionPoints(100)
             if (audioRef.current) audioRef.current.pause()
           }}>{option}</button>
-        ))}
+        ))}</div>}
 
         {start && question && <br />}
 
@@ -116,11 +117,10 @@ function QuizPage({ index }) {
 
         {/* when the quiz is finished, it displays the final score */}
         {finished && (
-          <>
+          <div className="quiz-results">
             <h2>Quiz complete!</h2>
-            <p>Final score: {score}</p>
-          </>
-
+            <p>Final score: <span className="final-score">{score}</span></p>
+          </div>
         )}
 
 

@@ -1,62 +1,49 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-}
-
-.site-header {
-    text-align: center;
-    padding: 30px;
-    border-bottom: 1px solid #ccc;
-}
-
-.site-header h1 {
-    font-size: 36px;
-}
-
-nav a {
-    margin: 0 15px;
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-#list {
-    width: 600px;
-    margin: 40px auto;
-}
-
 #list-heading {
-    text-align: center;
+  font-size: 30px;
+  margin-bottom: 25px;
 }
 
+/* the list of quiz cards sits in a row and wraps onto the next line */
 ul {
-    list-style: none;
-    padding: 0;
-    max-width: 15rem;
-    margin: 0 auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .quiz-card {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+  width: 220px;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.quiz-card:hover {
+  border-color: var(--accent);
 }
 
 .quiz-name {
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
+  margin: 0 0 10px;
+  font-size: 20px;
 }
 
 .quiz-card p {
-    margin: 10px 0 0;
+  margin: 8px 0;
+  color: var(--muted);
 }
 
-footer {
-    text-align: center;
-    margin-top: 50px;
+.quiz-card button {
+  margin-top: 10px;
+  width: 100%;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.quiz-card button:hover {
+  background-color: white;
+  color: black;
 }
