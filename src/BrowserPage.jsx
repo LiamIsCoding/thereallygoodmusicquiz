@@ -2,13 +2,17 @@ import { useState } from 'react'
 import './styles/browser_page.css'
 import quizData from './quizzes.json'
 
+// the browse page: shows a searchable list of all the quizzes
+// props: setPage switches to the quiz page, setQuiz tells the quiz page which quiz to load
 function BrowserPage({setPage, setQuiz}) {
+  // turns the quizzes json object into an array of [index, quiz] pairs so it can be mapped over
   const quizzes = Object.entries(quizData)
 
   // what the user has typed in the search bar
   const [search, setSearch] = useState('')
 
-  // only keep the quizzes whose name or genre contains the search text
+  // only keep the quizzes whose name or genre contains the search text (ignores capital letters)
+  // this makes a new array each time, it does not change the original quizzes
   const filteredQuizzes = quizzes.filter(([index, {name, genre}]) => {
     const text = search.toLowerCase()
     return name.toLowerCase().includes(text) || genre.toLowerCase().includes(text)
@@ -36,12 +40,14 @@ function BrowserPage({setPage, setQuiz}) {
         {/* message shown when nothing matches the search */}
         {filteredQuizzes.length === 0 && <p className="no-results">No quizzes found.</p>}
 
+        {/* one card per quiz, the key is the quiz's index so react can keep track of each card */}
         <ul>
           {filteredQuizzes.map(([index, {name, genre, timer}]) => (
             <li key={index} className="quiz-card">
               <h3 className="quiz-name">{name}</h3>
               <p>{genre}</p>
               <p>{timer} seconds</p>
+              {/* switches to the quiz page and saves which quiz was picked */}
               <button onClick={() => {setPage('quiz'); setQuiz(Number(index))}}>Play</button>
             </li>
           ))}
