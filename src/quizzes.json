@@ -3,39 +3,73 @@
         "name": "quiz 1",
         "genre": "rock",
         "timer": 5,
-        "questions":
-        [
+        "questions": [
             {
-                "options": ["song 1", "song 2", "song 3", "song 4"],
-                "correct": 0
+                "options": [
+                    "song 1",
+                    "song 2",
+                    "song 3",
+                    "song 4"
+                ],
+                "correct": 0,
+                "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=2280e15d29fc6fa0b2a26dd9232e49fbfaef5af94ffe7cdabaf1b41ca768e6e5"
             },
             {
-                "options": ["song 5", "song 6", "song 7", "song 8"],
-                "correct": 1
+                "options": [
+                    "song 5",
+                    "song 6",
+                    "song 7",
+                    "song 8"
+                ],
+                "correct": 1,
+                "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=2280e15d29fc6fa0b2a26dd9232e49fbfaef5af94ffe7cdabaf1b41ca768e6e5"
             },
             {
-                "options": ["song 9", "song 10", "song 11", "song 12"],
-                "correct": 2
+                "options": [
+                    "song 9",
+                    "song 10",
+                    "song 11",
+                    "song 12"
+                ],
+                "correct": 2,
+                "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=2280e15d29fc6fa0b2a26dd9232e49fbfaef5af94ffe7cdabaf1b41ca768e6e5"
             }
         ]
     },
     "1": {
         "name": "quiz 2",
-        "genre": "metal",
+        "genre": "nu metal",
         "timer": 5,
-        "questions":
-        [
+        "questions": [
             {
-                "options": ["song 4", "song 3", "song 2", "song 1"],
-                "correct": 2
+                "options": [
+                    "song 4",
+                    "song 3",
+                    "song 2",
+                    "song 1"
+                ],
+                "correct": 2,
+                "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3*~data=user_id=0,application_id=42~hmac=b80db13451c6f68a333d6b905ed971d21fde68b3260d81d6221789770644b967"
             },
             {
-                "options": ["song 8", "song 7", "song 6", "song 5"],
-                "correct": 1
+                "options": [
+                    "song 8",
+                    "song 7",
+                    "song 6",
+                    "song 5"
+                ],
+                "correct": 1,
+                "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3*~data=user_id=0,application_id=42~hmac=b80db13451c6f68a333d6b905ed971d21fde68b3260d81d6221789770644b967"
             },
             {
-                "options": ["song 12", "song 11", "song 10", "song 9"],
-                "correct": 0
+                "options": [
+                    "song 12",
+                    "song 11",
+                    "song 10",
+                    "song 9"
+                ],
+                "correct": 0,
+                "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3*~data=user_id=0,application_id=42~hmac=b80db13451c6f68a333d6b905ed971d21fde68b3260d81d6221789770644b967"
             }
         ]
     }

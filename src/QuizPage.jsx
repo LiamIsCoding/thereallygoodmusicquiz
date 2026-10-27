@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './styles/quiz_page.css'
 import quizData from './quizzes.json'
 
@@ -50,6 +50,10 @@ function QuizPage({ index }) {
     localStorage.setItem('results', JSON.stringify(saved))
   }, [finished])
 
+  {/*audio player logic*/ }
+  const clipSeconds = 5 + ((100 - questionPoints) / 20) * 5
+  const audioRef = useRef(null)
+  const [elapsed, setElapsed] = useState(0)
 
   return (
     <>
@@ -65,8 +69,17 @@ function QuizPage({ index }) {
         {start && question && <br />}
         {start && question && <span id="points">Points Available: {questionPoints}</span>}
         {start && question && <br />}
-        {start && question && <span id="song_player_here">song player here</span>}
-        {start && question && <button id="playSongBtn">Play</button>}
+        {start && question && <progress id="song_progress" value={elapsed} max={clipSeconds}></progress>}
+        {start && question && <button id="playSongBtn" onClick={() => {
+          if (audioRef.current) audioRef.current.pause()
+          const audio = new Audio(question.songUrl)
+          audioRef.current = audio
+          audio.ontimeupdate = () => {
+            setElapsed(audio.currentTime)
+            if (audio.currentTime >= clipSeconds) audio.pause()
+          }
+          audio.play()
+        }}>Play</button>}
         {start && question && <br />}
 
         {/* Create the buttons */}
@@ -79,17 +92,16 @@ function QuizPage({ index }) {
             setQPoints(currentQPoints => [...currentQPoints, questionPoints])
             setQuestionIndex(questionIndex + 1)
             setQuestionPoints(100)
+            if (audioRef.current) audioRef.current.pause()
           }}>{option}</button>
         ))}
 
         {start && question && <br />}
 
         {start && question && <button id="hint" disabled={questionPoints <= 0} onClick={() => {
-          //hint logic
-
-          //hint payment
+          if (audioRef.current) audioRef.current.pause()
+          setElapsed(0)
           setQuestionPoints(currentPoints => Math.max(0, currentPoints - 20))
-
         }}>Hint</button>}
 
 
