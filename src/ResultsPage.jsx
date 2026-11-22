@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './styles/results.css'
+import { NavLink } from 'react-router-dom'
 
 function loadResults() {
   try {
@@ -10,7 +11,7 @@ function loadResults() {
   }
 }
 
-function ResultsPage({ onBrowse }) {
+function ResultsPage() {
   const [results, setResults] = useState(loadResults)
   const [expanded, setExpanded] = useState(null)
 
@@ -27,7 +28,7 @@ function ResultsPage({ onBrowse }) {
       {results.length === 0 ? (
         <div className="results-empty">
           <p>No saved quiz attempts yet. Complete a quiz to see your scores here.</p>
-          <button onClick={onBrowse}>Find a Quiz</button>
+          <NavLink to="/browse">Find a Quiz</NavLink>
         </div>
       ) : (
         <>
