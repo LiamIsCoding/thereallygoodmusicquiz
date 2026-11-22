@@ -1,28 +1,13 @@
 import { useState } from 'react'
-import BrowserPage from './BrowserPage.jsx'
-import QuizPage from './QuizPage.jsx'
+
+import { Routes, Route, Navigate, NavLink} from 'react-router-dom';
+
+import BrowserPage from './BrowserPage.jsx';
+import QuizPage from './QuizPage.jsx';
+import ResultsPage from './ResultsPage.jsx';
+import NotFound from './NotFound.jsx';
 
 function App() {
-  const [page, setPage] = useState('browse')
-  const [quiz, setQuiz] = useState(0)
-
-    let currentPage;
-    switch (page) {
-        case 'browse':
-            currentPage = <BrowserPage setPage={setPage} setQuiz={setQuiz}/>;
-            break;
-        case 'quiz':
-            currentPage = <QuizPage index={quiz}/>;
-            break;
-        case 'results':
-            
-            break;
-
-        default:
-
-            break;
-    }
-
   return (
     <>
         <section id="header">
@@ -31,13 +16,19 @@ function App() {
                     <h1>The Really Good Music Quiz</h1>
                 </div>
                 <nav>
-                    <button onClick={() => setPage('browse')}>Find a Quiz</button>
-                    <button onClick={() => setPage('results')}>My Results</button>
+                    <NavLink to="/browse">Browse</NavLink>
+                    <NavLink to="/results">See My Results</NavLink>
                 </nav>
             </header>
 
             <main>
-                {currentPage}
+                <Routes>
+                    <Route path="/" element={<Navigate to="/browse" replace />} />
+                    <Route path="/browse" element={<BrowserPage />} />
+                    <Route path="/quiz/:id" element={<QuizPage />} />
+                    <Route path="/results" element={<ResultsPage />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
             </main>
         </section>
     </>

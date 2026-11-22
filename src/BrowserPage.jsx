@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './styles/browser_page.css'
 import quizData from './quizzes.json'
 
 // the browse page: shows a searchable list of all the quizzes
 // props: setPage switches to the quiz page, setQuiz tells the quiz page which quiz to load
-function BrowserPage({setPage, setQuiz}) {
+function BrowserPage() {
   // turns the quizzes json object into an array of [index, quiz] pairs so it can be mapped over
   const quizzes = Object.entries(quizData)
 
@@ -47,8 +48,8 @@ function BrowserPage({setPage, setQuiz}) {
               <h3 className="quiz-name">{name}</h3>
               <p>{genre}</p>
               <p>{timer} seconds</p>
-              {/* switches to the quiz page and saves which quiz was picked */}
-              <button onClick={() => {setPage('quiz'); setQuiz(Number(index))}}>Play</button>
+              {/* switches to the corresponding quiz page */}
+              <Link to={`/quiz/${index}`} className="quiz-play">Play</Link>
             </li>
           ))}
         </ul>

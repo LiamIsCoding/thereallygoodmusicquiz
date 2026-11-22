@@ -1,6 +1,7 @@
 // the entry point of the app: vite loads this file first (see index.html)
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 // global styles that apply to the whole app
 import './styles/index.css'
 import App from './App.jsx'
@@ -9,6 +10,8 @@ import App from './App.jsx'
 // StrictMode only runs extra checks while developing, it does not change how the app looks
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 )

@@ -1,11 +1,14 @@
 
 import { useState, useEffect, useRef } from 'react'
+import { useParams, Navigate } from 'react-router-dom'
 import './styles/quiz_page.css'
 import quizData from './quizzes.json'
+import NotFound from './NotFound'
 
-function QuizPage({ index }) {
+function QuizPage() {
   // Get the selected quiz
-  const quiz = Object.values(quizData)[index]
+  const {id} = useParams()
+  const quiz = quizData[id]
 
   // Store answers and points for each question
   const [answers, setAnswers] = useState([])
@@ -14,11 +17,11 @@ function QuizPage({ index }) {
   // Quiz progress
   const [start, setStart] = useState(false)
   const [questionIndex, setQuestionIndex] = useState(0)
-  const question = quiz.questions[questionIndex]
+  const question = quiz?.questions[questionIndex]
   const [questionPoints, setQuestionPoints] = useState(100)
 
   // Quiz completion
-  const finished = start && !question
+  const finished = quiz && start && !question
   const [score, setScore] = useState(0)
 
   // Build the result to save in localStorage
@@ -72,6 +75,11 @@ function QuizPage({ index }) {
       }
     }
   }, [questionIndex])
+
+  // Check if quiz exists
+  if(!quiz){
+    return <NotFound />
+  }
 
   return (
     <>
