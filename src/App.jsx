@@ -5,6 +5,7 @@ import { Routes, Route, Navigate, NavLink} from 'react-router-dom';
 import BrowserPage from './BrowserPage.jsx';
 import QuizPage from './QuizPage.jsx';
 import ResultsPage from './ResultsPage.jsx';
+import MakePage from './MakePage.jsx';
 import NotFound from './NotFound.jsx';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <nav>
                     <NavLink to="/browse">Browse</NavLink>
                     <NavLink to="/results">See My Results</NavLink>
+                    <NavLink to="/make">Make a Quiz</NavLink>
                 </nav>
             </header>
 
@@ -27,6 +29,7 @@ function App() {
                     <Route path="/browse" element={<BrowserPage />} />
                     <Route path="/quiz/:id" element={<QuizPage />} />
                     <Route path="/results" element={<ResultsPage />} />
+                    <Route path="/make" element={<MakePage />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
