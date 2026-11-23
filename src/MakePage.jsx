@@ -4,8 +4,11 @@ function MakePage() {
     // Default new question constructor
     const newQuestion = () => ({options: ["", "", "", ""], correct: 0});
     
+    // All Quizzes
+    const [quizzes, setQuizzes] = useState({});
+
     // Quiz information
-    const [quizName, setQuizName] = useState("");
+    const [name, setName] = useState("");
     const [genre, setGenre] = useState("");
     const [timer, setTimer] = useState(5);
     const [questions, setQuestions] = useState([newQuestion()]);
@@ -44,7 +47,24 @@ function MakePage() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        setQuizName("");
+        // Create a new ID
+        const id = Object.keys(quizzes).length;
+
+        // Create new quiz
+        const newQuizzes = {...quizzes,
+            [id]: {
+                name: name,
+                genre: genre,
+                timer: timer,
+                questions: questions
+            }
+        };
+
+        // Reset form
+        setName("");
+        setGenre("");
+        setTimer(5);
+        setQuestions([newQuestion()]);
     }
     
     return (
@@ -52,7 +72,7 @@ function MakePage() {
             <form onSubmit={handleSubmit}>
                 {/* Quiz Name */}
                 <div>
-                    <input aria-label="Enter a quiz name" value={quizName} onChange={(e) => setQuizName(e.target.value)} placeholder="Enter a quiz name..." required />
+                    <input aria-label="Enter a quiz name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter a quiz name..." required />
                 </div>
                 
                 {/* Genre */}
