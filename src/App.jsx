@@ -17,7 +17,7 @@ function App() {
                     <h1>The Really Good Music Quiz</h1>
                 </div>
                 <nav>
-                    <NavLink to="/browse">Browse</NavLink>
+                    <NavLink to="/browse">Browse Quizzes</NavLink>
                     <NavLink to="/results">See My Results</NavLink>
                     <NavLink to="/make">Make a Quiz</NavLink>
                 </nav>
