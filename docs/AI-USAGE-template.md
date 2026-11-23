@@ -43,4 +43,19 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
   how to make something only display if a variable is true jsx
   ```
 
-- **What it produced & what I changed:** "To make something display only when a variable is true in JSX, you should use the logical AND (&&) operator inside curly braces" I used && operator to render quiz buttons.
+- **What it produced & what I changed:** 
+"To make something display only when a variable is true in JSX, you should use the logical AND (&&) operator inside curly braces" I used && operator to render quiz buttons.
+
+### #1 - Generate a price-formatting helper
+- **Date:** 2026-03-30
+- **Member:** Sasha Dmitriev
+- **Tool / model:** gemini (AI overview)
+- **Files:** `src/QuizPage.jsx`
+- **Prompt (verbatim):**
+
+  ```
+  how to make an input form that you can add new instances to react
+  ```
+
+- **What it produced & what I changed:** 
+Gave boiler plate code for form, including update functions. I referenced the update logic and some of the add/remove logic, and instead made the form use li to be similar to the browser format
