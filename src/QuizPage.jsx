@@ -2,13 +2,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Navigate, Link } from 'react-router-dom'
 import './styles/quiz_page.css'
-import quizData from './quizzes.json'
+import { useQuizzes } from './hooks/useQuizzes.js'
 import NotFound from './NotFound'
 
 function QuizPage() {
   // Get the selected quiz
   const { id } = useParams()
-  const quiz = quizData[id]
+  const { status, quizzes, error, retry } = useQuizzes()
+  const quiz = quizzes[id]
+  const questionsReady =
+    status === 'success' && Boolean(quiz?.questions?.length)
 
   // Store answers and points for each question
   const [answers, setAnswers] = useState([])
@@ -118,21 +121,33 @@ function QuizPage() {
 
 
   // Check if quiz exists
-  if (!quiz) {
+  if (!quiz && status === 'success') {
     return <NotFound />
   }
+  if (status === 'error') {
+    return (
+      <section className="details-page">
+        <div className="details-message details-error" role="alert">
+          <p>Couldn't load the quiz: {error}</p>
+          <button onClick={retry}>Retry</button>
+        </div>
+      </section>
+    )
+  }
+
 
   return (
     <>
       <section id="quiz" aria-labelledby="quiz-title">
 
         {/* quiz name so the player knows which quiz they picked */}
-        <h2 id="quiz-title" className="quiz-title">{quiz.name}</h2>
+        <h2 id="quiz-title" className="quiz-title">{status === 'loading' ? 'Loading questions...' : quiz.name}</h2>
 
         {/* Start quiz */}
         {!start && (
           <button
             id="startQuizBtn"
+            disabled={!questionsReady}
             onClick={() => {
               setStart(true)
               setQuestionIndex(0)
@@ -214,7 +229,7 @@ function QuizPage() {
               })
             }}
           >
-            Play
+            {!previewUrl ? 'loading...' : 'Play'}
           </button>
         )}
 
