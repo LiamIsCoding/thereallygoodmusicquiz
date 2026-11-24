@@ -1,5 +1,5 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, afterEach } from 'vitest'
+import { describe, it, expect, afterEach, vi } from 'vitest'
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import QuizDetailsPage from './QuizDetailsPage.jsx'
@@ -20,7 +20,16 @@ const quizzes = {
     name: 'No Songs Yet',
     genre: 'pop',
     timer: 5,
-    questions: [{ options: ['a', 'b'], correct: 0 }],
+    questions: [{ options: ['', ''], correct: 0 }],
+  },
+  // like a quiz made on the Make a Quiz page: no "song" field, so the correct answer is used
+  2: {
+    name: 'Made On Site',
+    genre: 'nu metal',
+    timer: 5,
+    questions: [
+      { options: ['Last Resort', 'In the End'], correct: 1 },
+    ],
   },
 }
 
@@ -29,6 +38,7 @@ const artistsBySong = {
   'Bohemian Rhapsody': 'Queen',
   'Smells Like Teen Spirit': 'Nirvana',
   'Somebody to Love': 'Queen',
+  'In the End': 'Linkin Park',
 }
 const fakeSearch = async song => (artistsBySong[song] ? { title: song, artist: artistsBySong[song] } : null)
 
@@ -43,7 +53,10 @@ function renderAt(path, search = fakeSearch) {
   )
 }
 
-afterEach(cleanup)
+afterEach(() => {
+  cleanup()
+  vi.unstubAllGlobals()
+})
 
 describe('QuizDetailsPage', () => {
   it('shows a loading message, then each artist once', async () => {
@@ -95,6 +108,45 @@ describe('QuizDetailsPage', () => {
   it('explains when a quiz has no song info yet', async () => {
     renderAt('/quiz/1/details')
     expect(await screen.findByText(/hasn't been added/i)).toBeTruthy()
+  })
+
+  it('uses the correct answer as the song when there is no "song" field', async () => {
+    renderAt('/quiz/2/details')
+    expect(await screen.findByRole('link', { name: /Linkin Park/ })).toBeTruthy()
+  })
+
+  it('loads the quiz from cloud storage when no quizzes are passed in', async () => {
+    const fetchMock = vi.fn(async () => ({ ok: true, json: async () => quizzes }))
+    vi.stubGlobal('fetch', fetchMock)
+    render(
+      <MemoryRouter initialEntries={['/quiz/0/details']}>
+        <Routes>
+          <Route path="/quiz/:id/details" element={<QuizDetailsPage search={fakeSearch} />} />
+        </Routes>
+      </MemoryRouter>
+    )
+    expect(screen.getByRole('status').textContent).toMatch(/loading quiz/i)
+    expect(await screen.findByRole('heading', { name: 'Test Rock' })).toBeTruthy()
+    expect(await screen.findByRole('link', { name: /Nirvana/ })).toBeTruthy()
+    expect(fetchMock.mock.calls[0][0]).toBe('/.netlify/functions/quizzes')
+  })
+
+  it('shows an error with Retry when the quizzes cannot be loaded', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false, status: 500 })))
+    render(
+      <MemoryRouter initialEntries={['/quiz/0/details']}>
+        <Routes>
+          <Route path="/quiz/:id/details" element={<QuizDetailsPage search={fakeSearch} />} />
+        </Routes>
+      </MemoryRouter>
+    )
+    const alert = await screen.findByRole('alert')
+    expect(alert.textContent).toMatch(/Couldn't load the quiz/)
+
+    // the cloud works again, so Retry should load the quiz
+    vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => quizzes })))
+    fireEvent.click(screen.getByRole('button', { name: 'Retry' }))
+    expect(await screen.findByRole('heading', { name: 'Test Rock' })).toBeTruthy()
   })
 
   it('shows the not found page for a quiz that does not exist', () => {

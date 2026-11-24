@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { searchTrack, uniqueArtists } from '../api/lastfm.js'
+import { songForQuestion } from '../api/quizzes.js'
 
 // custom hook: looks up the artists for every song in a quiz using Last.fm
 // returns { status, artists, unmatched, missing, retry }
 //   status:    'loading' | 'success' | 'error' | 'empty' (no songs to look up)
 //   artists:   each artist once, e.g. ['Queen', 'Nirvana']
 //   unmatched: how many songs Last.fm couldn't find
-//   missing:   how many questions don't have a song name yet
+//   missing:   how many questions have no song name to look up
 //   error:     the error message when status is 'error'
 //   retry:     call this to try the request again
 export function useQuizArtists(quiz, { search = searchTrack } = {}) {
@@ -14,9 +15,10 @@ export function useQuizArtists(quiz, { search = searchTrack } = {}) {
   // bumping this number re-runs the effect, that's how retry works
   const [attempt, setAttempt] = useState(0)
 
-  // the song names to look up (questions without a "song" field are skipped)
+  // the song names to look up: the "song" field, or the correct answer's text if there isn't one
+  // questions with neither are skipped
   const questions = quiz?.questions ?? []
-  const songs = questions.map(q => q.song).filter(Boolean)
+  const songs = questions.map(songForQuestion).filter(Boolean)
   const missing = questions.length - songs.length
   // a string version of the songs so the effect only re-runs when the actual names change
   const songsKey = songs.join('\n')

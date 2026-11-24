@@ -1,31 +1,56 @@
 import { useParams, Link } from 'react-router-dom'
 import './styles/details_page.css'
-import quizData from './quizzes.json'
 import NotFound from './NotFound.jsx'
+import { useQuizzes } from './hooks/useQuizzes.js'
 import { useQuizArtists } from './hooks/useQuizArtists.js'
 import { artistUrl } from './api/lastfm.js'
 
 // the quiz details page (/quiz/:id/details): shows which artists are in a quiz before you play it
-// the artists come from Last.fm (track.search) using each question's song name
+// 1. loads the quizzes from cloud storage (same place the Browse page gets them)
+// 2. looks up each song on Last.fm (track.search) to find its artist
 // only artists are shown, not song titles, so the page doesn't give away the answers
-// props: quizzes and search can be swapped out in tests, the app uses the defaults
-function QuizDetailsPage({ quizzes = quizData, search } = {}) {
+// props: quizzes and search can be passed in by tests, the app uses the defaults
+function QuizDetailsPage({ quizzes: testQuizzes, search } = {}) {
   // the quiz id from the url, e.g. "0" in /quiz/0/details
   const { id } = useParams()
-  const quiz = quizzes[id]
 
-  // hooks must run before any early return, so call it even if the quiz doesn't exist
+  // hooks must run before any early return
+  const quizzesState = useQuizzes({ initial: testQuizzes })
+  const quiz = quizzesState.quizzes[id]
   const { status, artists, unmatched, missing, error, retry } = useQuizArtists(quiz, search ? { search } : undefined)
+
+  // still loading the quiz itself
+  if (quizzesState.status === 'loading') {
+    return (
+      <section className="details-page">
+        <p className="details-message" role="status">Loading quiz…</p>
+      </section>
+    )
+  }
+
+  // couldn't load the quizzes at all
+  if (quizzesState.status === 'error') {
+    return (
+      <section className="details-page">
+        <div className="details-message details-error" role="alert">
+          <p>Couldn't load the quiz: {quizzesState.error}</p>
+          <button onClick={quizzesState.retry}>Retry</button>
+        </div>
+      </section>
+    )
+  }
 
   if (!quiz) {
     return <NotFound />
   }
 
+  const questionCount = quiz.questions?.length ?? 0
+
   return (
     <section className="details-page" aria-labelledby="details-heading">
       <h2 id="details-heading">{quiz.name}</h2>
       <p className="details-meta">
-        {quiz.genre} · {quiz.questions.length} {quiz.questions.length === 1 ? 'song' : 'songs'} · {quiz.timer} seconds
+        {quiz.genre} · {questionCount} {questionCount === 1 ? 'song' : 'songs'} · {quiz.timer} seconds
       </p>
 
       <h3>Artists in this quiz</h3>
@@ -43,7 +68,7 @@ function QuizDetailsPage({ quizzes = quizData, search } = {}) {
         </div>
       )}
 
-      {/* no song names in this quiz yet */}
+      {/* no song names in this quiz */}
       {status === 'empty' && (
         <p className="details-message">Song info hasn't been added to this quiz yet.</p>
       )}
