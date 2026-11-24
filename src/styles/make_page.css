@@ -1,0 +1,76 @@
+form input:not([type="radio"]){
+    width: 80%;
+    background-color: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    color: var(--text)
+}
+
+form input:not([type="radio"]):focus{
+    border-color: var(--accent);
+    outline: none;
+}
+
+form input:not([type="radio"])::placeholder{
+    color: var(--accent-strong);
+}
+
+form input[type="radio"]{
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-strong);
+    cursor: pointer;
+}
+
+form ol{
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 264px);
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+form ul{
+    padding: 0;
+}
+
+.make-questions{
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background-color: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.make-questions h3{
+    font-size: 28px;
+}
+
+.make-options{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+form button{
+    color: var(--text);
+    background-color: var(--accent-strong);
+    border: 2px solid var(--accent-strong);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 30px;
+    margin: 10px;
+}
+
+form button:hover {
+    background-color: white;
+    color: black;
+}
