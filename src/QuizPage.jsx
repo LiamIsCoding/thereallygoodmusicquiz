@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, Navigate, Link } from 'react-router-dom'
 import './styles/quiz_page.css'
 import quizData from './quizzes.json'
 import NotFound from './NotFound'
@@ -83,7 +83,10 @@ function QuizPage() {
 
   return (
     <>
-      <section id="quiz">
+      <section id="quiz" aria-labelledby="quiz-title">
+
+        {/* quiz name so the player knows which quiz they picked */}
+        <h2 id="quiz-title" className="quiz-title">{quiz.name}</h2>
 
         {/* Start quiz */}
         {!start && (
@@ -107,7 +110,7 @@ function QuizPage() {
 
         {/* Round counter */}
         {start && question && (
-          <span id="round">
+          <span id="round" aria-live="polite">
             Round {questionIndex + 1}
           </span>
         )}
@@ -116,7 +119,7 @@ function QuizPage() {
 
         {/* Current score */}
         {start && question && (
-          <span id="score">
+          <span id="score" aria-live="polite">
             Score: {score}
           </span>
         )}
@@ -125,7 +128,7 @@ function QuizPage() {
 
         {/* Available points */}
         {start && question && (
-          <span id="points">
+          <span id="points" aria-live="polite">
             Points Available: {questionPoints}
           </span>
         )}
@@ -136,6 +139,7 @@ function QuizPage() {
         {start && question && (
           <progress
             id="song_progress"
+            aria-label="Song clip progress"
             value={elapsed}
             max={clipSeconds}
           />
@@ -227,6 +231,7 @@ function QuizPage() {
         {start && question && (
           <button
             id="hint"
+            aria-label="Hint: hear 5 more seconds for 20 fewer points"
             disabled={questionPoints <= 0}
             onClick={() => {
               if (audioRef.current) {
@@ -247,7 +252,7 @@ function QuizPage() {
 
         {/* Final result */}
         {finished && (
-          <div className="quiz-results">
+          <div className="quiz-results" role="status">
             <h2>Quiz complete!</h2>
             <p>
               Final score:{' '}
@@ -255,6 +260,7 @@ function QuizPage() {
                 {score}
               </span>
             </p>
+            <Link to="/results" className="quiz-results-link">See my results</Link>
           </div>
         )}
 

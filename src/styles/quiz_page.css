@@ -7,11 +7,15 @@
   border-radius: 10px;
 }
 
+.quiz-title {
+  margin: 0 0 15px;
+}
+
 #startQuizBtn {
   padding: 15px 40px;
   font-size: 22px;
-  background-color: var(--accent);
-  border-color: var(--accent);
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
 }
 
 #round {
@@ -42,8 +46,8 @@
 
 #playSongBtn {
   padding: 12px 40px;
-  background-color: var(--accent);
-  border-color: var(--accent);
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
 }
 
 /* the 4 answer buttons, two per row */
@@ -67,6 +71,10 @@
 /* results screen */
 .quiz-results h2 {
   font-size: 30px;
+}
+
+.quiz-results-link {
+  margin-top: 10px;
 }
 
 .final-score {
