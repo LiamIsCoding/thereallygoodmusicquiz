@@ -4,7 +4,7 @@ import './styles/browser_page.css'
 import quizData from './quizzes.json'
 
 // the browse page: shows a searchable list of all the quizzes
-// props: setPage switches to the quiz page, setQuiz tells the quiz page which quiz to load
+// each card links to that quiz's own page (/quiz/<id>)
 function BrowserPage() {
   // turns the quizzes json object into an array of [index, quiz] pairs so it can be mapped over
   const quizzes = Object.entries(quizData)
@@ -29,7 +29,7 @@ function BrowserPage() {
 
           {/* the search bar is controlled by state: typing updates `search` and the list re-renders */}
           <input
-            type="text"
+            type="search"
             className="search-bar"
             placeholder="Search by name or genre..."
             aria-label="Search quizzes"
@@ -39,17 +39,19 @@ function BrowserPage() {
         </div>
 
         {/* message shown when nothing matches the search */}
-        {filteredQuizzes.length === 0 && <p className="no-results">No quizzes found.</p>}
+        {/* role="status" makes screen readers announce this message when it appears */}
+        {filteredQuizzes.length === 0 && <p className="no-results" role="status">No quizzes found.</p>}
 
         {/* one card per quiz, the key is the quiz's index so react can keep track of each card */}
-        <ul>
+        <ul className="quiz-list" aria-labelledby="list-heading">
           {filteredQuizzes.map(([index, {name, genre, timer}]) => (
             <li key={index} className="quiz-card">
               <h3 className="quiz-name">{name}</h3>
               <p>{genre}</p>
               <p>{timer} seconds</p>
-              {/* switches to the corresponding quiz page */}
-              <Link to={`/quiz/${index}`} className="quiz-play">Play</Link>
+              {/* opens this quiz's page, e.g. /quiz/0
+                  aria-label gives each Play link a unique name, e.g. "Play quiz 1" */}
+              <Link to={`/quiz/${index}`} className="quiz-play" aria-label={`Play ${name}`}>Play</Link>
             </li>
           ))}
         </ul>

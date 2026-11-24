@@ -6,6 +6,14 @@
   --text: #ffffff;
   --muted: #bdb3dd;
   --accent: #ff4f9a;
+  /* darker pink for backgrounds behind white text: white on --accent is only 3.1:1,
+     white on --accent-strong is 4.8:1 (WCAG AA needs 4.5:1) */
+  --accent-strong: #d6246f;
+  /* lighter border for form fields: --border on --card is 1.6:1,
+     --border-strong is 3.6:1 (WCAG needs 3:1 for input outlines) */
+  --border-strong: #8172bf;
+  /* keyboard focus ring colour */
+  --focus: #ffd166;
 }
 
 body {
@@ -34,7 +42,8 @@ main {
   font-size: 32px;
 }
 
-nav button {
+nav button,
+nav a {
   margin: 0 8px;
 }
 
@@ -49,8 +58,48 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: var(--accent);
+/* router links that should look like buttons (nav, Play, "See my results", etc.) */
+nav a,
+.quiz-play,
+.quiz-results-link,
+.results-browse-link,
+.not-found a {
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 20px;
+  color: var(--text);
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+button:hover,
+nav a:hover,
+.quiz-play:hover,
+.quiz-results-link:hover,
+.results-browse-link:hover,
+.not-found a:hover {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+/* visible focus ring for keyboard users (only shows when tabbing, not when clicking) */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+main:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* <main> gets focus when the page changes, it doesn't need a ring for that */
+main:focus {
+  outline: none;
+}
+
+/* highlights the nav button for the page that is currently open */
+nav a[aria-current="page"] {
   border-color: var(--accent);
 }
 
@@ -62,4 +111,9 @@ button:disabled {
 button:disabled:hover {
   background-color: var(--card);
   border-color: var(--border);
+}
+/* make page lists: no bullets (these used to be removed by a global ul rule in browser_page.css) */
+.make-questions,
+.make-options {
+  list-style: none;
 }
