@@ -5,23 +5,36 @@ import './styles/quiz_page.css'
 import { useQuizzes } from './hooks/useQuizzes.js'
 import NotFound from './NotFound'
 
-function buildResults(quiz, finalScore, finalAnswers, finalQPoints) {
-    
-    return {
-      name: quiz.name,
-      genre: quiz.genre,
-      timer: quiz.timer,
-      score: finalScore,
-      questions: quiz.questions.map((question, i) => ({
-        answer: finalAnswers[i],
-        correct: question.correct,
-        points:
-          finalAnswers[i] === question.correct
-            ? finalQPoints[i]
-            : 0
-      }))
-    }
+function shuffleQuestions(items) {
+  const shuffled = [...items]
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const current = shuffled[i]
+    shuffled[i] = shuffled[j]
+    shuffled[j] = current
   }
+
+  return shuffled
+}
+
+function buildResults(quiz, finalScore, finalAnswers, finalQPoints, questions) {
+
+  return {
+    name: quiz.name,
+    genre: quiz.genre,
+    timer: quiz.timer,
+    score: finalScore,
+    questions: questions.map((question, i) => ({
+      answer: finalAnswers[i],
+      correct: question.correct,
+      points:
+        finalAnswers[i] === question.correct
+          ? finalQPoints[i]
+          : 0
+    }))
+  }
+}
 
 function QuizPage() {
   // Get the selected quiz
@@ -38,12 +51,13 @@ function QuizPage() {
   // Quiz progress
   const [start, setStart] = useState(false)
   const [questionIndex, setQuestionIndex] = useState(0)
-  const question = quiz?.questions[questionIndex]
+  const [questions, setQuestions] = useState([])
+  const question = questions[questionIndex]
   const [questionPoints, setQuestionPoints] = useState(100)
 
   // Quiz completion
   const finished = quiz && start && !question
-  
+
   const [score, setScore] = useState(0)
 
   //url info
@@ -66,11 +80,11 @@ function QuizPage() {
   }
 
   // Build the result to save in localStorage
-  
+
 
   // Save the quiz result after completion
   useEffect(() => {
-    
+
     if (!finished || !quiz) return
 
 
@@ -78,7 +92,7 @@ function QuizPage() {
       localStorage.getItem('results') || '[]'
     )
 
-    saved.push(buildResults(quiz, score, answers, qPoints))
+    saved.push(buildResults(quiz, score, answers, qPoints, questions))
 
     localStorage.setItem(
       'results',
@@ -155,6 +169,7 @@ function QuizPage() {
             id="startQuizBtn"
             disabled={!questionsReady}
             onClick={() => {
+              setQuestions(shuffleQuestions(quiz.questions))
               setStart(true)
               setQuestionIndex(0)
               setScore(0)
