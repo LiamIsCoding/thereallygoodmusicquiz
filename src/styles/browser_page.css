@@ -4,7 +4,8 @@
 }
 
 /* the list of quiz cards sits in a row and wraps onto the next line */
-ul {
+/* scoped to .quiz-list so it doesn't change lists on other pages */
+.quiz-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -36,14 +37,17 @@ ul {
   color: var(--muted);
 }
 
-.quiz-card button {
+/* the Play link on each card, full width and pink */
+.quiz-card .quiz-play {
+  display: block;
+  box-sizing: border-box;
   margin-top: 10px;
   width: 100%;
-  background-color: var(--accent);
-  border-color: var(--accent);
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
 }
 
-.quiz-card button:hover {
+.quiz-card .quiz-play:hover {
   background-color: white;
   color: black;
 }
@@ -69,7 +73,7 @@ ul {
   font-size: 16px;
   color: var(--text);
   background-color: var(--card);
-  border: 2px solid var(--border);
+  border: 2px solid var(--border-strong);
   border-radius: 20px;
 }
 
@@ -78,11 +82,21 @@ ul {
 }
 
 .search-bar:focus {
-  outline: none;
   border-color: var(--accent);
 }
 
 .no-results {
   color: var(--muted);
   font-size: 20px;
+}
+
+/* phones: center the quiz cards and let the search bar fill the row */
+@media (max-width: 600px) {
+  .quiz-list {
+    justify-content: center;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
 }
