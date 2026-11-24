@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './styles/make_page.css'
 
 function MakePage() {
     // Default new question constructor
