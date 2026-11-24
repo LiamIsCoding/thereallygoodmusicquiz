@@ -7,6 +7,9 @@ function MakePage() {
     // All quizzes for writing
     const [quizzes, setQuizzes] = useState({});
 
+    // Submitting state, to prevent double clicks from saving multiple times
+    const [submitting, setSubmitting] = useState(false);
+
     // Quiz information
     const [name, setName] = useState("");
     const [genre, setGenre] = useState("");
@@ -47,23 +50,34 @@ function MakePage() {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        // Attempt to save new quiz to cloud
-        const response = await fetch("/.netlify/functions/quizzes", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, genre, timer, questions }),
-        })
+        // Check whether currently submitting
+        if(submitting){
+            return;
+        }
+        setSubmitting(true);
 
-        // Reset page if successfully saved
-        if(response.ok){
-            // Update quiz information
-            setQuizzes(await response.json());
-            
-            // Reset form
-            setName("");
-            setGenre("");
-            setTimer(5);
-            setQuestions([newQuestion()]);
+        try {
+            // Attempt to save new quiz to cloud
+            const response = await fetch("/.netlify/functions/quizzes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, genre, timer, questions }),
+            })
+
+            // Reset page if successfully saved
+            if(response.ok){
+                // Update quiz information
+                setQuizzes(await response.json());
+                
+                // Reset form
+                setName("");
+                setGenre("");
+                setTimer(5);
+                setQuestions([newQuestion()]);
+            }
+        }
+        finally{
+            setSubmitting(false);
         }
     }
     
