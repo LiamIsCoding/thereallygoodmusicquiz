@@ -91,3 +91,64 @@ basic redirects fix for the .toml file, used the fix and debugged
 
 - **What it produced & what I changed:** 
 Made a basic data saving and loading function, I changed it to instead work with quizzes and take json directly
+
+### #5 - Test environment fix (issue #65)
+- **Date:** 2026-11-24
+- **Member:** Qudsia Fawad
+- **Tool / model:** Claude
+- **Files:** `src/QuizDetailsPage.test.jsx`, `package.json`
+- **Prompt (verbatim):**
+
+  ```
+  The component tests time out on startup with "Failed to start forks worker". Suggest a fix that works in my WSL setup.
+  ```
+
+- **What it produced & what I changed:** 
+Switched the component tests from jsdom to the lighter happy-dom environment. I installed happy-dom, and all tests passed.
+
+### #6 - Details page loads quizzes from cloud storage (issue #65)
+- **Date:** 2026-11-24
+- **Member:** Qudsia Fawad
+- **Tool / model:** Claude 
+- **Files:** `src/api/quizzes.js`, `src/api/quizzes.test.js`, `src/hooks/useQuizzes.js`, `src/hooks/useQuizArtists.js`, `src/QuizDetailsPage.jsx`, `src/QuizDetailsPage.test.jsx`
+
+**Prompt (verbatim):**
+
+  ```
+  Quizzes are now stored with Netlify Blobs instead of quizzes.json. Update the details page so it loads quizzes from cloud storage and works for quizzes created on the Make a Quiz page.
+
+  ```
+
+- **What it produced & what I changed:**
+The details page now loads quizzes from the Netlify function (with its own loading/error/Retry) instead of `quizzes.json`. For quizzes made on the website, which have no `song` field, it uses the correct answer's text as the song name. I merged milestone4 into my branch and confirmed all tests pass. I then put `quizzes.json` and `scripts/update-song-urls.mjs` back to the milestone4 versions, so the app only uses the cloud quiz data.
+
+### #7 - Make a Quiz page accessibility (issue #66)
+- **Date:** 2026-11-24
+- **Member:** Qudsia Fawad
+- **Tool / model:** Claude 
+- **Files:** `src/MakePage.jsx`, `src/styles/make_page.css`, `docs/ACCESSIBILITY.md`
+
+**Prompt (verbatim):**
+
+  ```
+  The Make a Quiz page is now finished. Fix its accessibility issues from docs/ACCESSIBILITY.md (heading, labels, unique control names, submit feedback, contrast) without changing the existing saving logic or design.
+  ```
+
+- **What it produced & what I changed:**
+A page heading, visible labels for name/genre/timer, unique screen reader names for each answer box and radio button, a "Saving..." state, and a success or error message after submitting. It also raised the input border and placeholder contrast and kept the keyboard focus outline. Sasha's saving logic and layout were kept. I ran Lighthouse on `/make`.
+
+### #8 - Lighthouse list warning fix (issue #66)
+- **Date:** 2026-11-24
+- **Member:** Qudsia Fawad
+- **Tool / model:** Claude 
+- **Files:** `src/MakePage.jsx`
+
+**Prompt (verbatim):**
+
+  ```
+  Lighthouse scores `/make` at 96 with the flag "List items (`<li>`) are not contained within `<ul>`, `<ol>` or `<menu>` parent elements". Fix it without losing the radio-group semantics.
+
+  ```
+
+- **What it produced & what I changed:**
+Moved `role="radiogroup"` from the `<ul>` to a wrapping `<div>`, so the answers stay a real list. Re-running Lighthouse gave 100, and I added the score to `docs/ACCESSIBILITY.md`.
