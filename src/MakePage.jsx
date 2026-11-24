@@ -4,7 +4,7 @@ function MakePage() {
     // Default new question constructor
     const newQuestion = () => ({options: ["", "", "", ""], correct: 0});
     
-    // All Quizzes
+    // All quizzes for writing
     const [quizzes, setQuizzes] = useState({});
 
     // Quiz information
@@ -44,27 +44,27 @@ function MakePage() {
         });
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
 
-        // Create a new ID
-        const id = Object.keys(quizzes).length;
+        // Attempt to save new quiz to cloud
+        const response = await fetch("/.netlify/functions/quizzes", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, genre, timer, questions }),
+        })
 
-        // Create new quiz
-        const newQuizzes = {...quizzes,
-            [id]: {
-                name: name,
-                genre: genre,
-                timer: timer,
-                questions: questions
-            }
-        };
-
-        // Reset form
-        setName("");
-        setGenre("");
-        setTimer(5);
-        setQuestions([newQuestion()]);
+        // Reset page if successfully saved
+        if(response.ok){
+            // Update quiz information
+            setQuizzes(await response.json());
+            
+            // Reset form
+            setName("");
+            setGenre("");
+            setTimer(5);
+            setQuestions([newQuestion()]);
+        }
     }
     
     return (
