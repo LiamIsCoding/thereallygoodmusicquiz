@@ -5,6 +5,24 @@ import './styles/quiz_page.css'
 import { useQuizzes } from './hooks/useQuizzes.js'
 import NotFound from './NotFound'
 
+function buildResults(quiz, finalScore, finalAnswers, finalQPoints) {
+    
+    return {
+      name: quiz.name,
+      genre: quiz.genre,
+      timer: quiz.timer,
+      score: finalScore,
+      questions: quiz.questions.map((question, i) => ({
+        answer: finalAnswers[i],
+        correct: question.correct,
+        points:
+          finalAnswers[i] === question.correct
+            ? finalQPoints[i]
+            : 0
+      }))
+    }
+  }
+
 function QuizPage() {
   // Get the selected quiz
   const { id } = useParams()
@@ -25,6 +43,7 @@ function QuizPage() {
 
   // Quiz completion
   const finished = quiz && start && !question
+  
   const [score, setScore] = useState(0)
 
   //url info
@@ -47,32 +66,19 @@ function QuizPage() {
   }
 
   // Build the result to save in localStorage
-  function buildResults(finalScore, finalAnswers, finalQPoints) {
-    return {
-      name: quiz.name,
-      genre: quiz.genre,
-      timer: quiz.timer,
-      score: finalScore,
-      questions: quiz.questions.map((question, i) => ({
-        answer: finalAnswers[i],
-        correct: question.correct,
-        points:
-          finalAnswers[i] === question.correct
-            ? finalQPoints[i]
-            : 0
-      }))
-    }
-  }
+  
 
   // Save the quiz result after completion
   useEffect(() => {
-    if (!finished) return
+    
+    if (!finished || !quiz) return
+
 
     const saved = JSON.parse(
       localStorage.getItem('results') || '[]'
     )
 
-    saved.push(buildResults(score, answers, qPoints))
+    saved.push(buildResults(quiz, score, answers, qPoints))
 
     localStorage.setItem(
       'results',
