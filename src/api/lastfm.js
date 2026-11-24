@@ -22,6 +22,8 @@ export function mapTrack(track) {
 }
 
 // searches Last.fm for a song name and returns the best match (or null if nothing matched)
+// "best" = the match with the most listeners, so the famous version wins
+// (e.g. "Paint It Black" finds The Rolling Stones, not a smaller band with a song of the same name)
 // signal is from an AbortController so the request can be cancelled (e.g. when leaving the page)
 // apiKey can be passed in for tests, otherwise the key from .env.local is used
 export async function searchTrack(songName, { signal, apiKey = API_KEY, fetchFn = fetch } = {}) {
@@ -34,7 +36,7 @@ export async function searchTrack(songName, { signal, apiKey = API_KEY, fetchFn 
     track: songName,
     api_key: apiKey,
     format: 'json',
-    limit: '1',
+    limit: '10',
   })
 
   const response = await fetchFn(`${API_URL}?${params}`, { signal })
@@ -49,9 +51,12 @@ export async function searchTrack(songName, { signal, apiKey = API_KEY, fetchFn 
   }
 
   const matches = data?.results?.trackmatches?.track
-  // with limit=1 Last.fm can send a single object instead of an array, so handle both
-  const first = Array.isArray(matches) ? matches[0] : matches
-  return mapTrack(first)
+  // Last.fm can send a single object instead of an array, so handle both
+  const list = (Array.isArray(matches) ? matches : [matches]).map(mapTrack).filter(Boolean)
+  if (list.length === 0) return null
+
+  // pick the most listened-to match
+  return list.reduce((best, track) => (track.listeners > best.listeners ? track : best))
 }
 
 // takes the matched tracks and returns each artist once, in the order they first appear

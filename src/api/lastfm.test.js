@@ -56,6 +56,22 @@ describe('searchTrack', () => {
     expect(url.searchParams.get('format')).toBe('json')
   })
 
+  it('picks the match with the most listeners, not just the first one', async () => {
+    const response = {
+      results: {
+        trackmatches: {
+          track: [
+            { name: 'Paint It Black', artist: 'BiSH', listeners: '20000' },
+            { name: 'Paint It, Black', artist: 'The Rolling Stones', listeners: '1900000' },
+            { name: 'Paint It Black', artist: 'Some Cover Band', listeners: '500' },
+          ],
+        },
+      },
+    }
+    const track = await searchTrack('Paint It Black', { apiKey: 'k', fetchFn: fakeFetch(response) })
+    expect(track.artist).toBe('The Rolling Stones')
+  })
+
   it('passes the abort signal through to fetch', async () => {
     const fetchFn = fakeFetch(lastfmResponse)
     const controller = new AbortController()
