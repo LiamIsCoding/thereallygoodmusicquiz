@@ -24,7 +24,7 @@ function BrowserPage() {
         }
       }
       finally {
-        loading = false;
+        setLoading(false);
       }
     }
 
