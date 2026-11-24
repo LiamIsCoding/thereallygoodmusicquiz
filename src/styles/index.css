@@ -63,7 +63,9 @@ nav a,
 .quiz-play,
 .quiz-results-link,
 .results-browse-link,
-.not-found a {
+.not-found a,
+.quiz-details,
+.details-back {
   display: inline-block;
   font-size: 18px;
   padding: 10px 20px;
@@ -79,7 +81,9 @@ nav a:hover,
 .quiz-play:hover,
 .quiz-results-link:hover,
 .results-browse-link:hover,
-.not-found a:hover {
+.not-found a:hover,
+.quiz-details:hover,
+.details-back:hover {
   background-color: var(--accent-strong);
   border-color: var(--accent-strong);
 }

@@ -52,6 +52,14 @@
   color: black;
 }
 
+/* the Details link under Play, same width but not pink */
+.quiz-card .quiz-details {
+  display: block;
+  box-sizing: border-box;
+  margin-top: 8px;
+  width: 100%;
+}
+
 /* top row: heading on the left, search bar on the right */
 .browse-top {
   display: flex;
