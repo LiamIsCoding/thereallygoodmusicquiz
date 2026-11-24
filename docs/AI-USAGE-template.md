@@ -32,7 +32,7 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
 
 <!-- Entries go below, newest last. Example: -->
 
-### #1 - Generate a price-formatting helper
+### #1 - Display check
 - **Date:** 2026-10-30
 - **Member:** Sasha Dmitriev
 - **Tool / model:** gemini (AI overview)
@@ -46,7 +46,7 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
 - **What it produced & what I changed:** 
 "To make something display only when a variable is true in JSX, you should use the logical AND (&&) operator inside curly braces" I used && operator to render quiz buttons.
 
-### #2 - Generate a price-formatting helper
+### #2 - Growing input form
 - **Date:** 2026-11-22
 - **Member:** Sasha Dmitriev
 - **Tool / model:** gemini (AI overview)
@@ -60,7 +60,7 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
 - **What it produced & what I changed:** 
 Gave boiler plate code for form, including update functions. I referenced the update logic and some of the add/remove logic, and instead made the form use li to be similar to the browser format
 
-### #3 - Generate a price-formatting helper
+### #3 - Netlify bug
 - **Date:** 2026-11-23
 - **Member:** Sasha Dmitriev
 - **Tool / model:** gemini (AI overview)
@@ -77,3 +77,17 @@ Gave boiler plate code for form, including update functions. I referenced the up
 
 - **What it produced & what I changed:** 
 basic redirects fix for the .toml file, used the fix and debugged
+
+### #4 - Generate a price-formatting helper
+- **Date:** 2026-11-23
+- **Member:** Sasha Dmitriev
+- **Tool / model:** gemini (AI overview)
+- **Files:** `netlify/functions/quizzes.js`
+- **Prompt (verbatim):**
+
+  ```
+  how to access and save information in netlify using react
+  ```
+
+- **What it produced & what I changed:** 
+Made a basic data saving and loading function, I changed it to instead work with quizzes and take json directly
