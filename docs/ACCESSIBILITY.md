@@ -1,4 +1,4 @@
-# Accessibility & UI/UX check (Milestone 4, issue #66)
+# Accessibility & UI/UX check (Milestone 3, issue #66)
 
 **Checked by:** Qudsia Fawad · **Date:** 2026-11-23 · **Pages:** Browse, Quiz, My Results, Make a Quiz, Not Found
 
@@ -11,8 +11,14 @@
   our CSS variables.
 - **Responsive:** checked at desktop width (1100px) and phone width (375px).
 
-> Lighthouse and axe could not be run in the environment used for this pass. Before the demo, run
-> **Chrome DevTools → Lighthouse → Accessibility** on the deployed site, and add the score here.
+**Lighthouse Accessibility (desktop, local production build, 2026-11-24):**
+
+| Page | Score |
+|------|-------|
+| Browse (`/browse`) | 100 |
+| My Results (`/results`) | 100 |
+| Quiz (`/quiz/0`) | 100 |
+| Make a Quiz (`/make`) | to do after #54 |
 
 ## What was found and fixed
 
