@@ -61,7 +61,7 @@ function BrowserPage() {
         {/* Message shown when nothing matches the search */}
         {/* Role="status" makes screen readers announce this message when it appears */}
         {filteredQuizzes.length === 0 && loading && <p className="no-results" role="status">Loading quizzes...</p>}
-        {filteredQuizzes.length === 0 && <p className="no-results" role="status">No quizzes found.</p>}
+        {filteredQuizzes.length === 0 && !loading && <p className="no-results" role="status">No quizzes found.</p>}
         
         {/* one card per quiz, the key is the quiz's index so react can keep track of each card */}
         <ul className="quiz-list" aria-labelledby="list-heading">
