@@ -2,7 +2,7 @@
 ## Members
 Member | Preferred Role(s)
 --- | --- 
-Sasha Dmitriev | Controlled form and blobs
+Sasha Dmitriev | Controlled form and blobs for persistent cloud state
 Qudsia Fawad | Browse, detail view, and accessibility
 Liam Evask | Playing the quiz, with Last.fm integration
 Omar Ahmed | User results
