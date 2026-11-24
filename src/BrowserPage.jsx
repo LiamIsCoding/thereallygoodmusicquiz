@@ -73,6 +73,8 @@ function BrowserPage() {
               {/* Opens this quiz's page, e.g. /quiz/0
                   aria-label gives each Play link a unique name, e.g. "Play quiz 1" */}
               <Link to={`/quiz/${index}`} className="quiz-play" aria-label={`Play ${name}`}>Play</Link>
+              {/* opens the details page that shows which artists are in this quiz */}
+              <Link to={`/quiz/${index}/details`} className="quiz-details" aria-label={`Details for ${name}`}>Details</Link>
             </li>
           ))}
         </ul>

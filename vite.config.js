@@ -8,4 +8,14 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  // only used by `npm run dev`: sends cloud quiz requests to the live Netlify site,
+  // so quizzes load locally too (the Netlify function doesn't run on your own computer)
+  server: {
+    proxy: {
+      '/.netlify/functions': {
+        target: 'https://thereallygoodmusicquiz.netlify.app',
+        changeOrigin: true,
+      },
+    },
+  },
 })

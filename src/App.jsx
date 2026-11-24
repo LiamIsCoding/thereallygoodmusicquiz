@@ -7,6 +7,7 @@ import QuizPage from './QuizPage.jsx';
 import ResultsPage from './ResultsPage.jsx';
 import MakePage from './MakePage.jsx';
 import NotFound from './NotFound.jsx';
+import QuizDetailsPage from './QuizDetailsPage.jsx';
 
 function App() {
   // when the page (url) changes, move keyboard/screen reader focus to the top of the new page
@@ -44,6 +45,7 @@ function App() {
                     <Route path="/" element={<Navigate to="/browse" replace />} />
                     <Route path="/browse" element={<BrowserPage />} />
                     <Route path="/quiz/:id" element={<QuizPage />} />
+                    <Route path="/quiz/:id/details" element={<QuizDetailsPage />} />
                     <Route path="/results" element={<ResultsPage />} />
                     <Route path="/make" element={<MakePage />} />
                     <Route path="*" element={<NotFound />} />
