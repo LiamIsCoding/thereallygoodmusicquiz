@@ -67,13 +67,31 @@ nav a,
 .quiz-details,
 .details-back {
   display: inline-block;
-  font-size: 18px;
+  font-size: 1rem;
   padding: 10px 20px;
   color: var(--text);
   background-color: var(--card);
   border: 2px solid var(--border);
   border-radius: 8px;
   text-decoration: none;
+}
+
+nav{
+  white-space: nowrap;
+}
+
+nav button, nav a{
+  margin: 0 0.25rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+@media(min-width: 600px){
+  nav button, nav a{
+    margin: 0 0.5rem;
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 button:hover,
