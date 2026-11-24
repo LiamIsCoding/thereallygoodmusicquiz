@@ -6,32 +6,35 @@
         "questions": [
             {
                 "options": [
-                    "song 1",
-                    "song 2",
-                    "song 3",
-                    "song 4"
+                    "Bohemian Rhapsody",
+                    "Hotel California",
+                    "Stairway to Heaven",
+                    "Sweet Child O' Mine"
                 ],
                 "correct": 0,
+                "song": "Bohemian Rhapsody",
                 "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=2280e15d29fc6fa0b2a26dd9232e49fbfaef5af94ffe7cdabaf1b41ca768e6e5"
             },
             {
                 "options": [
-                    "song 5",
-                    "song 6",
-                    "song 7",
-                    "song 8"
+                    "Back in Black",
+                    "Smells Like Teen Spirit",
+                    "Livin' on a Prayer",
+                    "Don't Stop Believin'"
                 ],
                 "correct": 1,
+                "song": "Smells Like Teen Spirit",
                 "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=2280e15d29fc6fa0b2a26dd9232e49fbfaef5af94ffe7cdabaf1b41ca768e6e5"
             },
             {
                 "options": [
-                    "song 9",
-                    "song 10",
-                    "song 11",
-                    "song 12"
+                    "Highway to Hell",
+                    "Free Bird",
+                    "Paint It Black",
+                    "Born to Run"
                 ],
                 "correct": 2,
+                "song": "Paint It Black",
                 "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/f/9/0/5f9a6a2ea1876e6d07c4b7feefa99951.mp3*~data=user_id=0,application_id=42~hmac=2280e15d29fc6fa0b2a26dd9232e49fbfaef5af94ffe7cdabaf1b41ca768e6e5"
             }
         ]
@@ -43,32 +46,35 @@
         "questions": [
             {
                 "options": [
-                    "song 4",
-                    "song 3",
-                    "song 2",
-                    "song 1"
+                    "Duality",
+                    "Chop Suey!",
+                    "Bring Me to Life",
+                    "Down with the Sickness"
                 ],
                 "correct": 2,
+                "song": "Bring Me to Life",
                 "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3*~data=user_id=0,application_id=42~hmac=b80db13451c6f68a333d6b905ed971d21fde68b3260d81d6221789770644b967"
             },
             {
                 "options": [
-                    "song 8",
-                    "song 7",
-                    "song 6",
-                    "song 5"
+                    "Last Resort",
+                    "In the End",
+                    "Bodies",
+                    "Break Stuff"
                 ],
                 "correct": 1,
+                "song": "In the End",
                 "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3*~data=user_id=0,application_id=42~hmac=b80db13451c6f68a333d6b905ed971d21fde68b3260d81d6221789770644b967"
             },
             {
                 "options": [
-                    "song 12",
-                    "song 11",
-                    "song 10",
-                    "song 9"
+                    "Freak on a Leash",
+                    "Rollin'",
+                    "Click Click Boom",
+                    "My Own Summer (Shove It)"
                 ],
                 "correct": 0,
+                "song": "Freak on a Leash",
                 "songUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3?hdnea=exp=1793098585~acl=/api/1/1/5/e/0/0/5e09a4a0e73681c2f28f724a4e41ce74.mp3*~data=user_id=0,application_id=42~hmac=b80db13451c6f68a333d6b905ed971d21fde68b3260d81d6221789770644b967"
             }
         ]
