@@ -5,6 +5,8 @@ import './styles/quiz_page.css'
 import { useQuizzes } from './hooks/useQuizzes.js'
 import NotFound from './NotFound'
 
+
+//shuffles the questions so the quiz is not the same each time
 function shuffleQuestions(items) {
   const shuffled = [...items]
 
@@ -18,6 +20,7 @@ function shuffleQuestions(items) {
   return shuffled
 }
 
+//builds the result object to save in localStorage after the quiz is finished, uses the shuffled questions to make sure the results match the order of the questions that were actually asked
 function buildResults(quiz, finalScore, finalAnswers, finalQPoints, questions) {
 
   return {
@@ -79,8 +82,6 @@ function QuizPage() {
     return data.previewUrl
   }
 
-  // Build the result to save in localStorage
-
 
   // Save the quiz result after completion
   useEffect(() => {
@@ -119,9 +120,10 @@ function QuizPage() {
     }
   }, [questionIndex])
 
-  //get the song url for the current question
+  //get the song name from the question to then find the urls
   const songName = question?.options?.[question.correct]
 
+  // Fetch the preview URL from Deezer when the quiz starts or the question changes
   useEffect(() => {
     setPreviewUrl(null)
     setPreviewError('')
@@ -169,6 +171,7 @@ function QuizPage() {
             id="startQuizBtn"
             disabled={!questionsReady}
             onClick={() => {
+              //this is where it actually shuffles
               setQuestions(shuffleQuestions(quiz.questions))
               setStart(true)
               setQuestionIndex(0)
