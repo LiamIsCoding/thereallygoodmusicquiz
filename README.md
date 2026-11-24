@@ -15,3 +15,10 @@ The project board can be found at https://github.com/users/LiamIsCoding/projects
 
 ## Website Deployment
 The running website can be found at https://thereallygoodmusicquiz.netlify.app
+
+## Running locally
+1. `npm install`
+2. Copy `.env.example` to `.env.local` and add a Last.fm API key (free at https://www.last.fm/api/account/create). `.env.local` is ignored by git, so the key is never committed.
+3. `npm run dev` to run the app, `npm test` to run the tests.
+
+On Netlify, the key is set under **Site configuration → Environment variables** as `VITE_LASTFM_API_KEY`.
