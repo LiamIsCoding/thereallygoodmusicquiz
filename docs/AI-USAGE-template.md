@@ -33,7 +33,7 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
 <!-- Entries go below, newest last. Example: -->
 
 ### #1 - Generate a price-formatting helper
-- **Date:** 2026-03-30
+- **Date:** 2026-10-30
 - **Member:** Sasha Dmitriev
 - **Tool / model:** gemini (AI overview)
 - **Files:** `src/QuizPage.jsx`
@@ -46,11 +46,11 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
 - **What it produced & what I changed:** 
 "To make something display only when a variable is true in JSX, you should use the logical AND (&&) operator inside curly braces" I used && operator to render quiz buttons.
 
-### #1 - Generate a price-formatting helper
-- **Date:** 2026-03-30
+### #2 - Generate a price-formatting helper
+- **Date:** 2026-11-22
 - **Member:** Sasha Dmitriev
 - **Tool / model:** gemini (AI overview)
-- **Files:** `src/QuizPage.jsx`
+- **Files:** `src/MakePage.jsx`
 - **Prompt (verbatim):**
 
   ```
@@ -59,3 +59,21 @@ Also drop a marker where the code lives: `// AI-assisted - see AI-USAGE.md #<n>`
 
 - **What it produced & what I changed:** 
 Gave boiler plate code for form, including update functions. I referenced the update logic and some of the add/remove logic, and instead made the form use li to be similar to the browser format
+
+### #3 - Generate a price-formatting helper
+- **Date:** 2026-11-23
+- **Member:** Sasha Dmitriev
+- **Tool / model:** gemini (AI overview)
+- **Files:** `netlify.toml`
+- **Prompt (verbatim):**
+
+  ```
+  Page not found
+  Looks like you’ve followed a broken link or entered a URL that doesn’t exist on this site.
+
+  If this is your site, and you weren’t expecting a 404 for this path, please visit Netlify’s “page not found” support guide for troubleshooting tips.
+  On reload
+  ```
+
+- **What it produced & what I changed:** 
+basic redirects fix for the .toml file, used the fix and debugged
