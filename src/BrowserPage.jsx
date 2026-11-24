@@ -7,17 +7,24 @@ function BrowserPage() {
   // Quizzes for reading
   const [quizzes, setQuizzes] = useState({});
 
+  const [loading, setLoading] = useState(true);
+
   // What the user has typed in the search bar
   const [search, setSearch] = useState('')
 
   useEffect(() => {
     async function loadQuizzes(){
-      // Request quiz data
-      const response = await fetch("/.netlify/functions/quizzes");
-      
-      // Set quizzes if data is received
-      if(response.ok){
-        setQuizzes(await response.json());
+      try {
+        // Request quiz data
+        const response = await fetch("/.netlify/functions/quizzes");
+        
+        // Set quizzes if data is received
+        if(response.ok){
+          setQuizzes(await response.json());
+        }
+      }
+      finally {
+        loading = false;
       }
     }
 
@@ -50,8 +57,9 @@ function BrowserPage() {
           />
         </div>
 
-        {/* Message shown when nothing matches the search */}
-        {filteredQuizzes.length === 0 && <p className="no-results">No quizzes found.</p>}
+        {/* Message shown when loading or nothing matches the search */}
+        {filteredQuizzes.length === 0 && loading && <p className="no-results">Loading quizzes...</p>}
+        {filteredQuizzes.length === 0 && !loading && <p className="no-results">No quizzes found.</p>}
 
         {/* One card per quiz, the key is the quiz's index so react can keep track of each card */}
         <ul>
