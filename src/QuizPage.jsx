@@ -7,7 +7,7 @@ import NotFound from './NotFound'
 
 function QuizPage() {
   // Get the selected quiz
-  const {id} = useParams()
+  const { id } = useParams()
   const quiz = quizData[id]
 
   // Store answers and points for each question
@@ -23,6 +23,25 @@ function QuizPage() {
   // Quiz completion
   const finished = quiz && start && !question
   const [score, setScore] = useState(0)
+
+  //url info
+  const [previewUrl, setPreviewUrl] = useState(null)
+  const [previewError, setPreviewError] = useState('')
+
+  //helper function to fetch the preview url from Deezer
+  async function fetchDeezerPreviewUrl(songName, abortSignal) {
+    const res = await fetch(
+      `/.netlify/functions/deezer-preview?song=${encodeURIComponent(songName)}`,
+      { signal: abortSignal }
+    )
+    const data = await res.json()
+
+    if (!res.ok) {
+      throw new Error(data.error || `Preview lookup failed (${res.status})`)
+    }
+
+    return data.previewUrl
+  }
 
   // Build the result to save in localStorage
   function buildResults(finalScore, finalAnswers, finalQPoints) {
@@ -65,6 +84,7 @@ function QuizPage() {
   const audioRef = useRef(null)
   const [elapsed, setElapsed] = useState(0)
 
+
   // Stop audio when changing questions or leaving the quiz
   useEffect(() => {
     return () => {
@@ -76,8 +96,29 @@ function QuizPage() {
     }
   }, [questionIndex])
 
+  //get the song url for the current question
+  const songName = question?.options?.[question.correct]
+
+  useEffect(() => {
+    setPreviewUrl(null)
+    setPreviewError('')
+
+    if (!start || !question || !songName) return
+
+    const controller = new AbortController()
+
+    fetchDeezerPreviewUrl(songName, controller.signal)
+      .then(setPreviewUrl)
+      .catch(error => {
+        if (error.name !== 'AbortError') setPreviewError(error.message)
+      })
+
+    return () => controller.abort()
+  }, [start, id, questionIndex, songName])
+
+
   // Check if quiz exists
-  if(!quiz){
+  if (!quiz) {
     return <NotFound />
   }
 
@@ -151,12 +192,13 @@ function QuizPage() {
         {start && question && (
           <button
             id="playSongBtn"
+            disabled={!previewUrl}
             onClick={() => {
               if (audioRef.current) {
                 audioRef.current.pause()
               }
 
-              const audio = new Audio(question.songUrl)
+              const audio = new Audio(previewUrl)
               audioRef.current = audio
 
               audio.ontimeupdate = () => {
@@ -174,6 +216,10 @@ function QuizPage() {
           >
             Play
           </button>
+        )}
+
+        {start && question && previewError && (
+          <p role="alert">{previewError}</p>
         )}
 
         {start && question && <br />}
