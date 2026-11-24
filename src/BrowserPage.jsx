@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './styles/browser_page.css'
 
 // The browse page: shows a searchable list of all the quizzes
+// Each card links to that quiz's own page (/quiz/<id>)
 function BrowserPage() {
   // Quizzes for reading
   const [quizzes, setQuizzes] = useState({});
@@ -48,7 +49,7 @@ function BrowserPage() {
 
           {/* The search bar is controlled by state: typing updates `search` and the list re-renders */}
           <input
-            type="text"
+            type="search"
             className="search-bar"
             placeholder="Search by name or genre..."
             aria-label="Search quizzes"
@@ -57,19 +58,21 @@ function BrowserPage() {
           />
         </div>
 
-        {/* Message shown when loading or nothing matches the search */}
-        {filteredQuizzes.length === 0 && loading && <p className="no-results">Loading quizzes...</p>}
-        {filteredQuizzes.length === 0 && !loading && <p className="no-results">No quizzes found.</p>}
-
-        {/* One card per quiz, the key is the quiz's index so react can keep track of each card */}
-        <ul>
+        {/* Message shown when nothing matches the search */}
+        {/* Role="status" makes screen readers announce this message when it appears */}
+        {filteredQuizzes.length === 0 && loading && <p className="no-results" role="status">Loading quizzes...</p>}
+        {filteredQuizzes.length === 0 && <p className="no-results" role="status">No quizzes found.</p>}
+        
+        {/* one card per quiz, the key is the quiz's index so react can keep track of each card */}
+        <ul className="quiz-list" aria-labelledby="list-heading">
           {filteredQuizzes.map(([index, {name, genre, timer}]) => (
             <li key={index} className="quiz-card">
               <h3 className="quiz-name">{name}</h3>
               <p>{genre}</p>
               <p>{timer} seconds</p>
-              {/* Switches to the corresponding quiz page */}
-              <Link to={`/quiz/${index}`} className="quiz-play">Play</Link>
+              {/* Opens this quiz's page, e.g. /quiz/0
+                  aria-label gives each Play link a unique name, e.g. "Play quiz 1" */}
+              <Link to={`/quiz/${index}`} className="quiz-play" aria-label={`Play ${name}`}>Play</Link>
             </li>
           ))}
         </ul>
