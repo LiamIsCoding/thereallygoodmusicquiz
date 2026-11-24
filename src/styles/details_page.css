@@ -1,0 +1,87 @@
+/* quiz details page (/quiz/:id/details) */
+.details-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+
+.details-page h2 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.details-meta {
+  margin: 0 0 25px;
+  color: var(--muted);
+}
+
+.details-page h3 {
+  margin: 0 0 15px;
+}
+
+.details-message {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.details-error p {
+  color: var(--text);
+}
+
+/* artists show as rounded "chips" that wrap onto new lines */
+.artist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.artist-chip a {
+  display: inline-block;
+  padding: 8px 16px;
+  color: var(--text);
+  text-decoration: none;
+  border: 2px solid var(--border-strong);
+  border-radius: 20px;
+}
+
+.artist-chip a:hover {
+  border-color: var(--accent);
+}
+
+.details-note {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.details-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.details-actions .quiz-play {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+/* hides text visually but keeps it for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,92 @@
+#quiz {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+
+.quiz-title {
+  margin: 0 0 15px;
+}
+
+#startQuizBtn {
+  padding: 15px 40px;
+  font-size: 22px;
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+#round {
+  display: inline-block;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#score,
+#points {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 15px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+#points {
+  color: #5eead4;
+}
+
+#song_progress {
+  width: 80%;
+  height: 15px;
+  margin: 15px 0;
+}
+
+#playSongBtn {
+  padding: 12px 40px;
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+/* the 4 answer buttons, two per row */
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.option-btn {
+  width: 45%;
+  height: 60px;
+}
+
+#hint {
+  border-style: dashed;
+}
+
+/* results screen */
+.quiz-results h2 {
+  font-size: 30px;
+}
+
+.quiz-results-link {
+  margin-top: 10px;
+}
+
+.final-score {
+  display: block;
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* phones: stack the answers in one column */
+@media (max-width: 480px) {
+  .option-btn {
+    width: 100%;
+  }
+}

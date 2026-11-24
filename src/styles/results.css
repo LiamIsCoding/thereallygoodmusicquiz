@@ -1,0 +1,60 @@
+
+.results-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.results-summary {
+  color: var(--muted);
+}
+
+.results-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.result-card,
+.results-empty {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+}
+
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.result-top h3 {
+  margin: 0;
+}
+
+.result-top p {
+  color: var(--muted);
+}
+
+.result-score {
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+.answer-list {
+  margin: 16px 0 0;
+  padding-left: 24px;
+  line-height: 1.8;
+}
+
+.clear-results {
+  margin-top: 14px;
+}
+
+.results-empty {
+  text-align: center;
+}

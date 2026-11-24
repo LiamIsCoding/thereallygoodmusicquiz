@@ -1,0 +1,70 @@
+{
+    "0": {
+        "name": "quiz 1",
+        "genre": "rock",
+        "timer": 5,
+        "questions": [
+            {
+                "options": [
+                    "Bohemian Rhapsody",
+                    "Hotel California",
+                    "Stairway to Heaven",
+                    "Sweet Child o' Mine"
+                ],
+                "correct": 0
+            },
+            {
+                "options": [
+                    "Back in Black",
+                    "Hotel California",
+                    "Paint It Black",
+                    "Livin' on a Prayer"
+                ],
+                "correct": 1
+            },
+            {
+                "options": [
+                    "Don't Stop Believin'",
+                    "Another One Bites the Dust",
+                    "Sweet Child o' Mine",
+                    "Seven Nation Army"
+                ],
+                "correct": 2
+            }
+        ]
+    },
+    "1": {
+        "name": "quiz 2",
+        "genre": "nu metal",
+        "timer": 5,
+        "questions": [
+            {
+                "options": [
+                    "Numb",
+                    "Last Resort",
+                    "In the End",
+                    "My Own Summer (Shove It)"
+                ],
+                "correct": 2
+            },
+            {
+                "options": [
+                    "Down with the Sickness",
+                    "Last Resort",
+                    "Duality",
+                    "Freak on a Leash"
+                ],
+                "correct": 1
+            },
+            {
+                "options": [
+                    "Freak on a Leash",
+                    "Bodies",
+                    "Blind",
+                    "Break Stuff"
+                ],
+                "correct": 0
+            }
+        ]
+    }
+}

@@ -1,0 +1,112 @@
+form input:not([type="radio"]){
+    width: 80%;
+    background-color: var(--card);
+    /* --border-strong so the box edge is visible (3.6:1, --border was 1.6:1) */
+    border: 2px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    color: var(--text)
+}
+
+/* pink border on focus, and keep the yellow keyboard focus ring from index.css */
+form input:not([type="radio"]):focus{
+    border-color: var(--accent);
+}
+
+/* muted purple placeholder (7.6:1), the dark pink was only 3.1:1 */
+form input:not([type="radio"])::placeholder{
+    color: var(--muted);
+}
+
+form input[type="radio"]{
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-strong);
+    cursor: pointer;
+}
+
+form ol{
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 264px);
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+form ul{
+    padding: 0;
+}
+
+.make-questions{
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background-color: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.make-questions h3{
+    font-size: 28px;
+}
+
+.make-options{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+form button{
+    color: var(--text);
+    background-color: var(--accent-strong);
+    border: 2px solid var(--accent-strong);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 30px;
+    margin: 10px;
+}
+
+form button:hover {
+    background-color: white;
+    color: black;
+}
+/* label above each of the top three boxes */
+.make-field label{
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.make-hint{
+    margin: -10px 0 10px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+form button:disabled,
+form button:disabled:hover{
+    background-color: var(--accent-strong);
+    color: var(--text);
+    opacity: 0.6;
+}
+
+/* message after submitting */
+.make-message{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.make-success{
+    color: #5eead4;
+}
+
+.make-error{
+    color: var(--text);
+    font-weight: bold;
+}
